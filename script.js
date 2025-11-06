@@ -40,7 +40,7 @@ function acenderVerde(){
 function modoAutomático(){
     limpar();
     let estado =0;
-    intervalo = setInterval(()=>{})
+    intervalo = setInterval(()=>{});
 }
 
 
