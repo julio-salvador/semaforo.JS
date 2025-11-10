@@ -1,14 +1,14 @@
 // Seleciona os elementos das luzes
 
-const luzVermelha = document.getElementsById("vermelho");
-const luzAmarela = document.getElementsById("amarelo");
+const luzVermelha = document.getElementsById("vermelha");
+const luzAmarelo = document.getElementsById("amarelo");
 const luzVerde = document.getElementsById("verde");
 
 // Botões
 
-const btnVermelho = document.getElementsById("btnVermelho");
+const btnVermelha = document.getElementsById("btnVermelha");
 const btnAmarelo = document.getElementsById("btnAmarelo");
-const btnVeede = document.getElementsById("btnVerde");
+const btnVerde = document.getElementsById("btnVerde");
 const btnAuto = document.getElementsById("btnAuto");
 const btnParar = document.getElementsById("btnParar");
 
@@ -18,18 +18,18 @@ let intervalo;
 
 function limpar(){
     luzVermelha.className = 'luz';
-    luzAmarela.className = 'luz';
-    luzVerde.className = 'luz';
+    luzAmarelo.className =  'luz';
+    luzVerde.className =    'luz';
 }
 
-function acenderVermelho(){
+function acenderVermelha(){
     limpar();
     luzVermelha.classList.add("acesa","vermelha");
 }
 
 function acenderAmarelo(){
     limpar();
-    luzAmarela.classList.add("acesa","amarela");
+    luzAmarelo.classList.add("acesa","amarelo");
 }
 
 function acenderVerde(){
@@ -40,7 +40,28 @@ function acenderVerde(){
 function modoAutomático(){
     limpar();
     let estado =0;
-    intervalo = setInterval(()=>{});
+    intervalo = setInterval(()=>{
+        if(estado === 0 ) acenderVermelha();
+        else if (estado === 1 ) acenderAmarelo();
+        else if (estado === 2 ) acenderVerde();
+        estado = (estado + 1) % 3;
+    }, 1000)
 }
+
+function parar(){
+    clearInterval(intervalo);
+    limpar;
+}
+
+btnParar.onclick = parar;
+btnAuto.onclick = modoAutomático;
+btnVerde.onclick = acenderVerde;
+btnAmarelo.onclick = acenderAmarelo;
+btnVermelha.onclick = acenderVermelha;
+
+
+    
+
+
 
 
